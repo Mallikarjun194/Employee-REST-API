@@ -1,7 +1,6 @@
 package main
 
 import (
-	"Employee-REST-API/config"
 	"Employee-REST-API/routes"
 	"github.com/go-chi/chi"
 	"github.com/sirupsen/logrus"
@@ -10,8 +9,8 @@ import (
 )
 
 func main() {
-	logrus.Infof("Server Listening at:%v", config.PORT)
+	logrus.Infof("Server Listening at:%v", "5001")
 	router := chi.NewRouter()
 	routes.EmployeeRoutes(router)
-	log.Fatal(http.ListenAndServe(config.KEY_SEPARATOR+config.PORT, router))
+	log.Fatal(http.ListenAndServe(":5001", router))
 }

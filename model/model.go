@@ -8,6 +8,5 @@ type Employee struct {
 }
 
 type Response struct {
-	EmpID   string `json:"emp_id,omitempty"`
 	Message string `json:"message,omitempty"`
 }
