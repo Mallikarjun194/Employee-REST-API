@@ -1,6 +1,12 @@
 # Employee-REST-API
 ## CRUD API's for Employe Details
 
+### Clone the repo:
+    git clone https://github.com/Mallikarjun194/Employee-REST-API.git
+####
+#### To Start the server:
+    go run main.go
+####
 ### API END-POINTS:
 ###
 ##### 1.  CREATE EMP: Create empolyee with few details
