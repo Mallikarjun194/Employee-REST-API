@@ -3,6 +3,7 @@ package handlers
 import (
 	"Employee-REST-API/model"
 	"encoding/json"
+	"github.com/go-chi/chi"
 	"io/ioutil"
 	"net/http"
 )
@@ -41,7 +42,7 @@ func GetEmployees(w http.ResponseWriter, r *http.Request) {
 
 func GetEmployeeByID(w http.ResponseWriter, r *http.Request) {
 	var empObj []byte
-	var empID = r.URL.Query().Get("empID")
+	var empID = chi.URLParam(r, "empID")
 
 	empDetail, _ := EmpMap[empID]
 	empObj, _ = json.Marshal(empDetail)
@@ -54,7 +55,7 @@ func GetEmployeeByID(w http.ResponseWriter, r *http.Request) {
 
 func UpdateEmployee(w http.ResponseWriter, r *http.Request) {
 	var empObj []byte
-	var empID = r.URL.Query().Get("empID")
+	var empID = chi.URLParam(r, "empID")
 
 	empDetail, _ := EmpMap[empID]
 	body, _ := ioutil.ReadAll(r.Body)
@@ -74,7 +75,7 @@ func UpdateEmployee(w http.ResponseWriter, r *http.Request) {
 
 func DeleteEmployee(w http.ResponseWriter, r *http.Request) {
 	var empObj []byte
-	var empID = r.URL.Query().Get("empID")
+	var empID = chi.URLParam(r, "empID")
 
 	delete(EmpMap, empID)
 	empObj, _ = json.Marshal("Successfully deleted the emp " + empID)

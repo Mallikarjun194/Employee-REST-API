@@ -2,15 +2,14 @@ package main
 
 import (
 	"Employee-REST-API/routes"
+	"fmt"
 	"github.com/go-chi/chi"
-	"github.com/sirupsen/logrus"
-	"log"
 	"net/http"
 )
 
 func main() {
-	logrus.Infof("Server Listening at:%v", "5001")
+	fmt.Sprintf("Server Listening at:%s", "5001")
 	router := chi.NewRouter()
 	routes.EmployeeRoutes(router)
-	log.Fatal(http.ListenAndServe(":5001", router))
+	http.ListenAndServe(":5001", router)
 }
