@@ -19,7 +19,7 @@ Response:
 
     {
         "emp_id": "1234567",
-        "emp_name": "Aejun",
+        "emp_name": "Arjun",
         "salary": 76999,
         "age": 29
     }
