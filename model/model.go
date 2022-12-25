@@ -6,7 +6,3 @@ type Employee struct {
 	Salary  float32 `json:"salary,omitempty"`
 	Age     int     `json:"age,omitempty"`
 }
-
-type Response struct {
-	Message string `json:"message,omitempty"`
-}

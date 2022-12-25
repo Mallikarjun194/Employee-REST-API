@@ -1,9 +1,8 @@
-package controllers
+package handlers
 
 import (
 	"Employee-REST-API/model"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -12,15 +11,13 @@ var EmpMap = make(map[string]*model.Employee, 0)
 
 func CreateEmployee(w http.ResponseWriter, r *http.Request) {
 	NewEmp := &model.Employee{}
-	Resp := &model.Response{}
 	var empObj []byte
 
 	body, _ := ioutil.ReadAll(r.Body)
 	json.Unmarshal(body, NewEmp)
 
 	EmpMap[NewEmp.EmpID] = NewEmp
-	Resp.Message = fmt.Sprintf("Successfully added emp with ID " + NewEmp.EmpID)
-	empObj, _ = json.Marshal(Resp)
+	empObj, _ = json.Marshal(NewEmp)
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -77,12 +74,10 @@ func UpdateEmployee(w http.ResponseWriter, r *http.Request) {
 
 func DeleteEmployee(w http.ResponseWriter, r *http.Request) {
 	var empObj []byte
-	var Resp model.Response
 	var empID = r.URL.Query().Get("empID")
 
 	delete(EmpMap, empID)
-	Resp.Message = "Successfully deleted the emp " + empID
-	empObj, _ = json.Marshal(Resp)
+	empObj, _ = json.Marshal("Successfully deleted the emp " + empID)
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
