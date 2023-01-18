@@ -21,7 +21,7 @@ func CreateEmployee(w http.ResponseWriter, r *http.Request) {
 	empObj, _ = json.Marshal(NewEmp)
 
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
+	w.WriteHeader(http.StatusCreated)
 	w.Write(empObj)
 
 }
@@ -70,7 +70,6 @@ func UpdateEmployee(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(empObj)
-
 }
 
 func DeleteEmployee(w http.ResponseWriter, r *http.Request) {

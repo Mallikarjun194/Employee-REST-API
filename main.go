@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	fmt.Sprintf("Server Listening at:%s", "5001")
+	fmt.Println("Server Listening at:5001")
 	router := chi.NewRouter()
 	routes.EmployeeRoutes(router)
-	http.ListenAndServe(":5001", router)
+	http.ListenAndServe("localhost:5001", router)
 }
