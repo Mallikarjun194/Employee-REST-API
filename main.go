@@ -8,8 +8,12 @@ import (
 )
 
 func main() {
-	fmt.Println("Server Listening at:5001")
+	fmt.Println("Server Listening at:8080")
 	router := chi.NewRouter()
 	routes.EmployeeRoutes(router)
-	http.ListenAndServe("localhost:5001", router)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	http.ListenAndServe(":" + port, router)
 }
